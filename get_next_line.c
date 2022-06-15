@@ -64,7 +64,7 @@ static char	*strdupline(char *join)
 	i = 0;
 	if (!join[i])
 		return (NULL);
-	s = malloc((size_of_line(join) + 2) * sizeof(char));
+	s = malloc((size_of_line(join) + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
 	i = 0;
