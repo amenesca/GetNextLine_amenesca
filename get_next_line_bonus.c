@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:48:20 by amenesca          #+#    #+#             */
-/*   Updated: 2022/06/15 13:05:53 by amenesca         ###   ########.fr       */
+/*   Updated: 2022/06/15 13:10:04 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*read_to_buff(int fd, char *join)
 {
@@ -93,14 +93,14 @@ static char	*set_join(char *join)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*join;
+	static char	*join[256];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	join = read_to_buff(fd, join);
-	if (!join)
+	join[fd] = read_to_buff(fd, join[fd]);
+	if (!join[fd])
 		return (NULL);
-	line = strdupline(join);
-	join = set_join(join);
+	line = strdupline(join[fd]);
+	join[fd] = set_join(join[fd]);
 	return (line);
 }
