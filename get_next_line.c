@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:48:20 by amenesca          #+#    #+#             */
-/*   Updated: 2022/06/15 13:05:53 by amenesca         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:31:44 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*read_to_buff(int fd, char *join)
 	if (!buff)
 		return (NULL);
 	bytes = 1;
-	while (!ft_strchr(join, '\n') && bytes)
+	while (!my_strchr(join, '\n') && bytes)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes == -1)
@@ -35,7 +35,7 @@ static char	*read_to_buff(int fd, char *join)
 			join = malloc(1 * sizeof(char));
 			*join = '\0';
 		}
-		join = ft_strjoin(join, buff);
+		join = my_strjoin(join, buff);
 	}
 	free(buff);
 	return (join);
@@ -51,7 +51,7 @@ static char	*strdupline(char *join)
 		return (NULL);
 	while (join[i] && join[i] != '\n')
 		i++;
-	s = malloc((i + 1) * sizeof(char));
+	s = malloc((i + 2) * sizeof(char));
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -78,7 +78,7 @@ static char	*set_join(char *join)
 		free (join);
 		return (NULL);
 	}
-	s = malloc((ft_strlen(join) - i + 1) * sizeof(char));
+	s = malloc((my_strlen(join) - i + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
 	i++;

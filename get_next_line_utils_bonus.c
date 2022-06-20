@@ -6,13 +6,13 @@
 /*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:36:14 by amenesca          #+#    #+#             */
-/*   Updated: 2022/06/15 13:11:46 by amenesca         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:27:58 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*my_strchr(const char *s, int c)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	my_strlen(const char *s)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*my_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	j = 0;
 	i = -1;
-	str = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	str = (char *) malloc((my_strlen(s1) + my_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	while (s1[++i] != '\0')
